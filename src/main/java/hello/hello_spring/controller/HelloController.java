@@ -21,4 +21,10 @@ public class HelloController {
         model.addAttribute("name", name);
         return "hello-template";
     }
+
+    @GetMapping("hello-string")
+    @ResponseBody   // http의 응답 body부에 "hello" + name을 직접 넣어줄 때 사용
+    public String helloString(@RequestParam("name") String name) {
+        return "hello " + name;
+    }
 }
