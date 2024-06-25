@@ -1,12 +1,18 @@
 package hello.hello_spring.repository;
 
 import hello.hello_spring.domain.Member;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;    // static import 해서, assertThat 메소드 앞의 Assertions를 생략할 수 있도록 함
 
 class MemoryMemberRepositoryTest {
     MemoryMemberRepository repository = new MemoryMemberRepository();
+
+    @AfterEach
+    public void afterEach() {
+        repository.clearStore();    // 테스트가 실행되고 끝날 때마다 저장소를 지움
+    }
 
     @Test
     public void save() {
